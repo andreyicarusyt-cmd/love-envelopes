@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#fff7f3">
+<meta name="description" content="Три конверта, три идеи для нашего свидания. Открой тот, который тебе по душе.">
+<title>Три конверта для тебя ♥</title>
+<style>
+:root{--ink:#4b3036;--muted:#96757a;--rose:#d96c83;--rose-dark:#b94e68;--paper:#fffaf7;--line:#f0d9d8;--shadow:0 18px 55px rgba(126,69,80,.12)}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;color:var(--ink);font-family:ui-rounded,"SF Pro Rounded","Segoe UI",system-ui,-apple-system,sans-serif;background:radial-gradient(ellipse at 10% 5%,#ffe5e8 0,transparent 32%),radial-gradient(ellipse at 90% 90%,#fbe7d8 0,transparent 30%),#fff7f3;overflow-x:hidden}
+body:before,body:after{position:fixed;content:"♥";color:rgba(217,108,131,.12);font-size:170px;pointer-events:none;z-index:0}
+body:before{top:2%;left:-35px;transform:rotate(-18deg)}body:after{right:-30px;bottom:-45px;transform:rotate(16deg)}
+main{position:relative;z-index:1;width:min(100% - 30px,760px);margin:0 auto;padding:48px 0 34px}
+.hero{text-align:center;margin-bottom:30px}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;padding:8px 13px;border:1px solid #f0d3d7;background:#fffaf8;border-radius:999px;color:var(--rose-dark);font-size:12px;font-weight:800;letter-spacing:.11em;text-transform:uppercase}
+h1{font-family:Georgia,"Times New Roman",serif;font-weight:500;font-size:clamp(36px,8vw,59px);letter-spacing:-.04em;line-height:1.04;margin:20px 0 13px}
+h1 span{color:var(--rose-dark);font-style:italic}
+.subtitle{max-width:440px;margin:0 auto;color:var(--muted);font-size:15px;line-height:1.65}
+.envelopes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:34px 0 20px}
+.envelope{appearance:none;border:1px solid #f0d8d7;background:rgba(255,252,249,.92);border-radius:22px;padding:14px 12px 18px;color:var(--ink);cursor:pointer;text-align:center;box-shadow:0 8px 22px rgba(126,69,80,.06);transition:transform .22s,box-shadow .22s,border-color .22s;min-width:0}
+.envelope:hover{transform:translateY(-6px);box-shadow:var(--shadow);border-color:#e9aab6}.envelope:focus-visible,button:focus-visible{outline:3px solid #e9aab6;outline-offset:3px}
+.envelope-art{height:118px;display:grid;place-items:center;position:relative;margin-bottom:12px}
+.env{width:105px;height:76px;position:relative;border-radius:8px;background:linear-gradient(145deg,#f4a7b5,#d96882);box-shadow:0 9px 18px rgba(185,78,104,.19);overflow:hidden;transform:rotate(-3deg);transition:transform .25s}
+.envelope:nth-child(2) .env{background:linear-gradient(145deg,#f6c99b,#e9a56e);transform:rotate(3deg)}
+.envelope:nth-child(3) .env{background:linear-gradient(145deg,#d5b6df,#a987c4);transform:rotate(-2deg)}
+.env:before{content:"";position:absolute;left:0;right:0;top:0;margin:auto;width:0;height:0;border-left:52px solid transparent;border-right:52px solid transparent;border-top:43px solid rgba(255,255,255,.42)}
+.env:after{content:"";position:absolute;inset:auto 0 0;height:0;border-left:52px solid transparent;border-right:52px solid transparent;border-bottom:42px solid rgba(255,255,255,.18)}
+.seal{position:absolute;z-index:2;left:50%;top:50%;transform:translate(-50%,-5%);width:28px;height:28px;border-radius:50%;background:#fff1f0;color:#b94e68;display:grid;place-items:center;font-size:15px;box-shadow:0 2px 5px #8c4b5a33}
+.envelope:nth-child(2) .seal{color:#b8793f}.envelope:nth-child(3) .seal{color:#8d69a5}
+.sparkle{position:absolute;font-size:19px;color:#dba0a9}.s1{top:4px;left:7px}.s2{right:5px;bottom:7px;font-size:15px}
+.envelope strong{display:block;font-size:14px;line-height:1.35;margin:0 0 5px}.envelope small{display:block;color:var(--muted);font-size:11px;line-height:1.4}
+.hint{text-align:center;color:#b08c91;font-size:12px}
+.card{display:none;background:rgba(255,252,249,.96);border:1px solid var(--line);border-radius:28px;padding:clamp(22px,5vw,38px);box-shadow:var(--shadow);animation:rise .4s ease both}
+.card.show{display:block}
+.card-top{display:flex;justify-content:space-between;align-items:center;gap:12px;color:var(--rose-dark);font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase}
+.back{border:0;background:#fff0f1;color:var(--rose-dark);border-radius:999px;padding:9px 12px;cursor:pointer;font:inherit;font-size:12px;letter-spacing:0;text-transform:none}
+.card-emoji{font-size:45px;margin:20px 0 6px}
+h2{font-family:Georgia,"Times New Roman",serif;font-size:clamp(28px,6vw,40px);font-weight:500;letter-spacing:-.025em;line-height:1.1;margin:0 0 12px}
+.intro{font-size:15px;line-height:1.7;color:#80636a;margin:0 0 23px}
+.steps{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.steps li{display:flex;align-items:flex-start;gap:12px;line-height:1.55;font-size:14px}
+.num{flex:0 0 27px;height:27px;border-radius:50%;display:grid;place-items:center;background:#fde7ea;color:var(--rose-dark);font-size:12px;font-weight:800}
+.ending{margin:24px 0 0;padding:17px 18px;background:#fff1f1;border-radius:16px;color:#9f5366;font-family:Georgia,"Times New Roman",serif;font-size:17px;line-height:1.5}
+.actions{display:grid;gap:10px;margin-top:20px}
+.primary{border:0;border-radius:15px;padding:15px 18px;background:linear-gradient(135deg,#de788d,#c85673);color:white;font-weight:800;font-size:14px;cursor:pointer;box-shadow:0 8px 18px #c856732c;transition:transform .18s}
+.primary:hover{transform:translateY(-2px)}.secondary{border:1px solid var(--line);background:#fffaf8;color:var(--muted);border-radius:15px;padding:13px;font-weight:700;cursor:pointer}
+.accepted{display:none;text-align:center;padding:12px 0 0;animation:rise .35s ease both}.accepted.show{display:block}.accepted .big-heart{font-size:46px;animation:pulse .9s ease-in-out infinite alternate}.accepted p{color:#8b626b;line-height:1.65}
+footer{text-align:center;color:#bd989d;font-size:12px;margin-top:30px}
+.heart-float{position:fixed;z-index:10;bottom:-30px;pointer-events:none;animation:floatUp 2.2s ease-in forwards}
+@keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+@keyframes floatUp{to{transform:translateY(-110vh) rotate(25deg);opacity:0}}
+@keyframes pulse{to{transform:scale(1.13)}}
+@media(max-width:560px){main{padding-top:32px}.envelopes{grid-template-columns:1fr;gap:11px;margin-top:25px}.envelope{display:flex;align-items:center;text-align:left;gap:15px;padding:10px 14px;border-radius:18px}.envelope-art{flex:0 0 91px;height:78px;margin:0}.env{width:76px;height:55px}.env:before{border-left-width:38px;border-right-width:38px;border-top-width:31px}.env:after{border-left-width:38px;border-right-width:38px;border-bottom-width:30px}.seal{width:23px;height:23px;font-size:12px}.envelope strong{font-size:14px}.envelope small{font-size:12px}.envelope-copy{flex:1}.s1{top:0;left:0}.s2{right:0;bottom:0}.subtitle{font-size:14px}.hint{margin-top:13px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition:none!important}}
+</style>
+</head>
+<body>
+<main>
+<section class="hero" id="hero">
+<div class="eyebrow">✦ только для тебя ✦</div>
+<h1>Три конверта.<br><span>Одно свидание.</span></h1>
+<p class="subtitle">Я приготовил для нас три маленьких приключения. Выбирай сердцем — а я позабочусь об остальном. ♥</p>
+</section>
+<section class="envelopes" id="envelopes" aria-label="Выбери конверт">
+<button class="envelope" data-date="food" aria-label="Открыть конверт: Хочу вкусного">
+<div class="envelope-art"><span class="sparkle s1">✦</span><div class="env"><span class="seal">♥</span></div><span class="sparkle s2">✧</span></div>
+<div class="envelope-copy"><strong>Хочу вкусного</strong><small>Маленькое гастро-приключение</small></div>
+</button>
+<button class="envelope" data-date="adventure" aria-label="Открыть конверт: Хочу приключений">
+<div class="envelope-art"><span class="sparkle s1">✦</span><div class="env"><span class="seal">♥</span></div><span class="sparkle s2">✧</span></div>
+<div class="envelope-copy"><strong>Хочу приключений</strong><small>Немного азарта и смеха</small></div>
+</button>
+<button class="envelope" data-date="romance" aria-label="Открыть конверт: Хочу романтики">
+<div class="envelope-art"><span class="sparkle s1">✦</span><div class="env"><span class="seal">♥</span></div><span class="sparkle s2">✧</span></div>
+<div class="envelope-copy"><strong>Хочу романтики</strong><small>Время только для нас двоих</small></div>
+</button>
+</section>
+<p class="hint" id="hint">Нажми на конверт, чтобы узнать, что внутри ♡</p>
+<section class="card" id="card" aria-live="polite">
+<div class="card-top"><span>Твоё свидание</span><button class="back" id="back">← Все конверты</button></div>
+<div id="details">
+<div class="card-emoji" id="emoji"></div><h2 id="title"></h2><p class="intro" id="intro"></p><ol class="steps" id="steps"></ol><p class="ending" id="ending"></p>
+<div class="actions"><button class="primary" id="accept">Свидание принято! ♥</button><button class="secondary" id="another">Посмотреть другой конверт</button></div>
+</div>
+<div class="accepted" id="accepted"><div class="big-heart">💗</div><h2>Ура, у нас свидание!</h2><p id="acceptedText"></p><button class="secondary" id="again">Вернуться к конвертам</button></div>
+</section>
+<footer>Сделано с любовью и мыслями о тебе ♥</footer>
+</main>
+<script>
+const dates={
+food:{emoji:"🍰",title:"Сегодня мы идём за вкусным",intro:"Сегодня мы выберемся в новое уютное место и устроим маленькое гастро-приключение. Никакой спешки — только вкусная еда и мы.",steps:["Выбираем кафе или ресторан, в котором мы ещё не были.","Заказываем друг другу что-нибудь вкусное — пусть будет сюрприз.","Обязательно берём новый десерт на двоих.","За едой мечтаем о местах, куда хотим однажды отправиться вместе."],ending:"Самое вкусное в любом месте — это всё равно время рядом с тобой. ♥",accepted:"Свидание принято! 🍰 Давай выберем место и дату — вкусное приключение уже ждёт нас."},
+adventure:{emoji:"🎳",title:"Сегодня нас ждёт приключение",intro:"Пора немного посоревноваться, подурачиться и вместе попробовать что-то необычное!",steps:["Выбираем развлечение: боулинг, бильярд, картинг или игровые автоматы.","Устраиваем мини-турнир. Победитель получает право выбрать следующий пункт программы.","Проигравший покупает вкусняшку — спорить бесполезно, правила есть правила 😌","После прогулка и обязательное смешное фото на память."],ending:"С тобой даже проигрывать весело. Но я всё-таки собираюсь победить! 💌",accepted:"Вызов принят! 🎉 Выберем день и решим, в каком приключении участвуем."},
+romance:{emoji:"💗",title:"Сегодня мы едем в Баден-Баден",intro:"Сегодня я хочу устроить нам день отдыха вдвоём — без спешки, только мы и немного времени для себя.",steps:["Едем вместе в термальный комплекс Баден-Баден в Екатеринбурге.","Отдыхаем в бассейнах и термальных зонах, расслабляемся и забываем о повседневных делах.","Проводим время вдвоём, болтаем, смеёмся и наслаждаемся этим днём.","После можем зайти куда-нибудь перекусить и продлить наше свидание."],ending:"Мой любимый способ отдыхать — это быть рядом с тобой. ❤️",accepted:"Свидание принято! 💗 Давай выберем день и вместе спланируем наш поход в Баден-Баден."}
+};
+const envelopes=document.getElementById("envelopes"),hint=document.getElementById("hint"),hero=document.getElementById("hero"),card=document.getElementById("card"),details=document.getElementById("details"),accepted=document.getElementById("accepted");
+let current=null;
+function openDate(key){current=key;const d=dates[key];document.getElementById("emoji").textContent=d.emoji;document.getElementById("title").textContent=d.title;document.getElementById("intro").textContent=d.intro;document.getElementById("ending").textContent=d.ending;document.getElementById("steps").replaceChildren(...d.steps.map((s,i)=>{const li=document.createElement("li"),num=document.createElement("span"),txt=document.createElement("span");num.className="num";num.textContent=String(i+1).padStart(2,"0");txt.textContent=s;li.append(num,txt);return li;}));document.getElementById("acceptedText").textContent=d.accepted;hero.style.display="none";envelopes.style.display="none";hint.style.display="none";card.classList.add("show");details.style.display="block";accepted.classList.remove("show");window.scrollTo({top:0,behavior:"smooth"});}
+function goBack(){card.classList.remove("show");hero.style.display="";envelopes.style.display="";hint.style.display="";window.scrollTo({top:0,behavior:"smooth"});}
+function celebrate(){details.style.display="none";accepted.classList.add("show");for(let i=0;i<18;i++){const h=document.createElement("span");h.className="heart-float";h.textContent=["♥","♡","💗","✦"][i%4];h.style.left=Math.random()*100+"vw";h.style.fontSize=(14+Math.random()*22)+"px";h.style.animationDelay=(Math.random()*.8)+"s";document.body.append(h);setTimeout(()=>h.remove(),3200);}}
+document.querySelectorAll(".envelope").forEach(b=>b.addEventListener("click",()=>openDate(b.dataset.date)));
+document.getElementById("back").addEventListener("click",goBack);document.getElementById("another").addEventListener("click",goBack);document.getElementById("again").addEventListener("click",goBack);document.getElementById("accept").addEventListener("click",celebrate);
+</script>
+</body>
+</html>
